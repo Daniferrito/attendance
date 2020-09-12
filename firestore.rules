@@ -1,0 +1,31 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    //Un alumno puede ver la lista de grupos
+    match /grupos/{grupo} {
+       allow read;
+    }
+
+    //Un alumno puede ver la lista de sesiones
+    match /grupos/{grupo}/sesiones/{sesion} {
+       allow read;
+    }
+
+    //Un alumno puede ver la lista de alumnos
+    match /grupos/{grupo}/alumnos/{alumno} {
+       allow read;
+    }
+    
+    //Un alumno puede añadir a la lista de asitencia
+    match /grupos/{grupo}/sesiones/{sesion}/asiste/*  {
+       allow create;
+    }
+    
+    //Un profesor puede leer y escribir cualquier documento de sus grupos
+    match /grupos/{grupo=**} {
+       allow read, write: if exists(/databases/$(database)/documents
+           /grupos/$(grupo)/profesores/$(request.auth.uid));
+    }
+  }
+}
