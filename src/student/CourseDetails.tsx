@@ -10,7 +10,7 @@ import partition from "../utils/partition";
 import Group from "../types/Group";
 import Session from "../types/Session";
 
-interface CourseDetailsProps {}
+interface CourseDetailsProps { }
 
 const CourseDetails = (props: CourseDetailsProps) => {
   const { course } = useParams();
@@ -44,7 +44,7 @@ const CourseDetails = (props: CourseDetailsProps) => {
       <Typography variant="h5">Open sessions</Typography>
       <List>
         {open.map((doc) => (
-          <ListItem button component="a" href={`/${course}/${doc.id}`}>
+          <ListItem key={doc.id} button component="a" href={`/${course}/${doc.id}`}>
             <ListItemText primary={doc.id} />
           </ListItem>
         ))}
@@ -52,7 +52,7 @@ const CourseDetails = (props: CourseDetailsProps) => {
       <Typography variant="h5">Closed sessions</Typography>
       <List>
         {closed.map((doc) => (
-          <ListItem button>
+          <ListItem key={doc.id} button>
             <ListItemText primary={doc.id} />
           </ListItem>
         ))}

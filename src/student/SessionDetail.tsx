@@ -8,10 +8,12 @@ import Student from "../types/Student";
 
 interface SessionDetailsProps {}
 
+const nombreAlumnoKey = "nombreAlumno";
+
 const SessionDetails = (props: SessionDetailsProps) => {
   const classes = useStyles();
   const { course, session } = useParams();
-  const [chosenStudent, setChosenStudent] = useState("");
+  const [chosenStudent, setChosenStudent] = useState(localStorage.getItem(nombreAlumnoKey)||undefined);
   const [sentState, setSentState] = useState(false);
   const [valueStudents, loadingStudents, errorStudents] = useCollectionData<
     Student
@@ -28,6 +30,8 @@ const SessionDetails = (props: SessionDetailsProps) => {
   }
 
   const onSubmitStudent = () => {
+    if (chosenStudent===undefined) return;
+    localStorage.setItem(nombreAlumnoKey, chosenStudent);
     fire
       .firestore()
       .collection(`grupos/${course}/sesiones/${session}/asisten`)
@@ -44,8 +48,9 @@ const SessionDetails = (props: SessionDetailsProps) => {
   return (
     <>
       <Autocomplete
-        options={valueStudents}
-        getOptionLabel={(option) => option.id}
+        defaultValue={chosenStudent}
+        options={valueStudents.map((student)=>student.id)}
+        getOptionLabel={(option) => option}
         className={classes.autocomplete}
         renderInput={(params) => (
           <TextField {...params} label="Select your name" variant="outlined" />

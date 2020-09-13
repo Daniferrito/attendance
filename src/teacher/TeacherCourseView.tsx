@@ -42,7 +42,7 @@ const TeacherCourseView = () => {
       <Typography variant="h5">Open sessions</Typography>
       <List>
         {open.map((doc) => (
-          <ListItem button component="a" href={`/teacher/${course}/${doc.id}`}>
+          <ListItem key={doc.id} button component="a" href={`/teacher/${course}/${doc.id}`}>
             <ListItemText primary={doc.id} />
           </ListItem>
         ))}
@@ -50,7 +50,7 @@ const TeacherCourseView = () => {
       <Typography variant="h5">Closed sessions</Typography>
       <List>
         {closed.map((doc) => (
-          <ListItem button component="a" href={`/teacher/${course}/${doc.id}`}>
+          <ListItem key={doc.id} button component="a" href={`/teacher/${course}/${doc.id}`}>
             <ListItemText primary={doc.id} />
           </ListItem>
         ))}
