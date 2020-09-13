@@ -18,14 +18,13 @@ service cloud.firestore {
     }
     
     //Un alumno puede añadir a la lista de asitencia
-    match /grupos/{grupo}/sesiones/{sesion}/asiste/*  {
-       allow create;
+    match /grupos/{grupo}/sesiones/{sesion}/asisten/{nombre} {
+       allow create, update;
     }
     
     //Un profesor puede leer y escribir cualquier documento de sus grupos
-    match /grupos/{grupo=**} {
-       allow read, write: if exists(/databases/$(database)/documents
-           /grupos/$(grupo)/profesores/$(request.auth.uid));
+    match /grupos/{grupo}/{rest=**} {
+       allow read, write: if request.auth != null && grupo in get(/databases/$(database)/documents/profesores/$(request.auth.uid)).data.grupos;
     }
   }
 }
