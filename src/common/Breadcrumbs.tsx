@@ -45,7 +45,7 @@ const MyBreadcrumbs = (props: MyBreadcrumbsProps) => {
           return (
             <Breadcrumbs aria-label="breadcrumb">
               <LinkRouter color="inherit" to="/">
-                Home
+                Inicio
               </LinkRouter>
               {pathnames.map((value, index) => {
                 const last = index === pathnames.length - 1;

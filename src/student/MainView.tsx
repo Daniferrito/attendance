@@ -16,7 +16,7 @@ const MainView = () => {
     }
   );
   if (loading || value == null) {
-    return <div>"Still loading groups"</div>;
+    return <div>"Cargando grupos."</div>;
   }
 
   if (error) {

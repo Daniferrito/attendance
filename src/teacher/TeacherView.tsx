@@ -24,7 +24,7 @@ const TeacherView = () => {
   const [open, closed] = partition(value, (doc) => doc.sesion_activa != null);
   return (
     <>
-      <Typography variant="h5">Open courses</Typography>
+      <Typography variant="h5">Grupos abiertos</Typography>
       <List>
         {open.map((doc) => (
           <ListItem
@@ -37,7 +37,7 @@ const TeacherView = () => {
           </ListItem>
         ))}
       </List>
-      <Typography variant="h5">Closed courses</Typography>
+      <Typography variant="h5">Grupos cerrados</Typography>
       <List>
         {closed.map((doc) => (
           <ListItem key={doc.id} button component="a" href={`/teacher/${doc.id}`}>

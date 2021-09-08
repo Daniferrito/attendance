@@ -19,7 +19,7 @@ service cloud.firestore {
     
     //Un alumno puede añadir a la lista de asitencia
     match /grupos/{grupo}/sesiones/{sesion}/asisten/{nombre} {
-       allow create, update;
+       allow create: if exists(/databases/$(database)/documents/grupos/$(grupo)/alumnos/$(nombre));
     }
     
     //Un profesor puede leer y escribir cualquier documento de sus grupos

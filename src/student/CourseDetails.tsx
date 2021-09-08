@@ -29,7 +29,7 @@ const CourseDetails = (props: CourseDetailsProps) => {
     }
   );
   if (loading || loadingDoc || value == null || valueDoc == null) {
-    return <div>"Still loading groups"</div>;
+    return <div>"Cargando grupos"</div>;
   }
 
   if (error || errorDoc) {
@@ -41,7 +41,7 @@ const CourseDetails = (props: CourseDetailsProps) => {
   );
   return (
     <>
-      <Typography variant="h5">Open sessions</Typography>
+      <Typography variant="h5">Sesiones abiertas</Typography>
       <List>
         {open.map((doc) => (
           <ListItem key={doc.id} button component="a" href={`/${course}/${doc.id}`}>
@@ -49,7 +49,7 @@ const CourseDetails = (props: CourseDetailsProps) => {
           </ListItem>
         ))}
       </List>
-      <Typography variant="h5">Closed sessions</Typography>
+      <Typography variant="h5">Sesiones cerradas</Typography>
       <List>
         {closed.map((doc) => (
           <ListItem key={doc.id} button>

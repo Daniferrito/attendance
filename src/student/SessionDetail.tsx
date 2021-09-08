@@ -6,23 +6,23 @@ import { TextField, makeStyles, Button } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import Student from "../types/Student";
 
-interface SessionDetailsProps {}
+interface SessionDetailsProps { }
 
 const nombreAlumnoKey = "nombreAlumno";
 
 const SessionDetails = (props: SessionDetailsProps) => {
   const classes = useStyles();
   const { course, session } = useParams();
-  const [chosenStudent, setChosenStudent] = useState(localStorage.getItem(nombreAlumnoKey)||undefined);
+  const [chosenStudent, setChosenStudent] = useState(localStorage.getItem(nombreAlumnoKey) || undefined);
   const [sentState, setSentState] = useState(false);
-  const [valueStudents, loadingStudents, errorStudents] = useCollectionData<
-    Student
-  >(fire.firestore().collection(`grupos/${course}/alumnos`), {
+  const [valueStudents, loadingStudents, errorStudents] = useCollectionData<Student>(
+    fire.firestore().collection(`grupos/${course}/alumnos`
+    ), {
     idField: "id",
     snapshotListenOptions: { includeMetadataChanges: true },
   });
   if (loadingStudents || valueStudents == null) {
-    return <div>"Still loading groups"</div>;
+    return <div>"Cargando grupos"</div>;
   }
 
   if (errorStudents) {
@@ -30,7 +30,7 @@ const SessionDetails = (props: SessionDetailsProps) => {
   }
 
   const onSubmitStudent = () => {
-    if (chosenStudent===undefined) return;
+    if (chosenStudent === undefined) return;
     localStorage.setItem(nombreAlumnoKey, chosenStudent);
     fire
       .firestore()
@@ -42,29 +42,35 @@ const SessionDetails = (props: SessionDetailsProps) => {
       })
       .catch((err) => {
         console.warn(err);
+        window.alert('Hay un problema al registrar tu nombre.');
+
       });
   };
 
   return (
     <>
+      <br />
       <Autocomplete
         defaultValue={chosenStudent}
-        options={valueStudents.map((student)=>student.id)}
+        options={valueStudents.map((student) => student.id)}
         getOptionLabel={(option) => option}
         className={classes.autocomplete}
         renderInput={(params) => (
-          <TextField {...params} label="Select your name" variant="outlined" />
+          <TextField {...params} label="Selecciona tu nombre" variant="outlined" />
         )}
         onInputChange={(_, newStudent) => setChosenStudent(newStudent)}
       />
+      <br />
       <Button
         variant="contained"
         color={sentState ? "primary" : "default"}
         disabled={chosenStudent === "" || sentState}
         onClick={onSubmitStudent}
       >
-        {sentState ? "Already set as attending" : "Set as attending"}
+        {sentState ? "Ya has sido registrado" : "Asisto presencialmente"}
       </Button>
+      <br />
+      <p><b>IMPORTANTE:</b> Bajo ningún concepto se puede pulsar el botón si no es tu nombre el seleccionado o si no estás asistiendo de manera PRESENCIAL a la clase.</p>
     </>
   );
 };
