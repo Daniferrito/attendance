@@ -22,6 +22,17 @@ const LoginScreen = (props: LoginScreenProps) => {
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
     ],
+    // callbacks: {
+    //   signInSuccessWithAuthResult: (authResult) => {
+    //     if(!authResult.additionalUserInfo.isNewUser) {
+    //       return true;
+    //     }
+    //     // Habría que crear la regla en la base de datos
+    //     const colleccion = fire.firestore().collection("profesores");
+    //     colleccion.doc(authResult.user.uid).set({nombre: authResult.user.displayName});
+    //     return false;
+    //   }
+    // },
   };
   return <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={fire.auth()} />;
 };

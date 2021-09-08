@@ -7,10 +7,11 @@ import Group from "../types/Group";
 import fire from "../fire";
 import partition from "../utils/partition";
 import { Typography, List, ListItem, ListItemText, Button, TextField, makeStyles } from "@material-ui/core";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Session from "../types/Session";
 
 const TeacherCourseView = () => {
+  const history = useHistory();
   const classes = useStyles();
   const { course } = useParams();
   const [inputValue,setInputValue] = useState('');
@@ -83,6 +84,13 @@ const TeacherCourseView = () => {
 
   return (
     <>
+      <Button
+          variant="contained"
+          color="primary"
+          onClick={() => history.push(`/add/${course}`)}
+        >
+          Add students
+        </Button>
       <Typography variant="h5">Sesiones abiertas</Typography>
       <List>
         {open.map((doc) => (

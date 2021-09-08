@@ -1,9 +1,10 @@
 import React from "react";
-import { useCollectionData } from "react-firebase-hooks/firestore";
+import { useCollectionData, useDocumentData } from "react-firebase-hooks/firestore";
 import Group from "../types/Group";
 import fire from "../fire";
 import partition from "../utils/partition";
 import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
+import Teacher from "../types/Teacher";
 
 const TeacherView = () => {
   const [value, loading, error] = useCollectionData<Group>(
@@ -13,7 +14,11 @@ const TeacherView = () => {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
-  if (loading || value == null) {
+  const user = fire.auth().currentUser as firebase.User;
+  const [teacher, loadingT, errorT] = useDocumentData<Teacher>(
+    fire.firestore().doc(`profesores/${user.uid}`),
+  )
+  if (loading || value == null || loadingT || teacher == null) {
     return <div>"Still loading groups"</div>;
   }
 
@@ -21,7 +26,11 @@ const TeacherView = () => {
     return <div>{`Found error: ${error}`}</div>;
   }
 
-  const [open, closed] = partition(value, (doc) => doc.sesion_activa != null);
+  if (errorT) {
+    return <div>{`Found error: ${errorT}`}</div>;
+  }
+  const [open, closed] = partition(value.filter(it => teacher.grupos.map(gr=>gr.replace(/\s/g, "_")).includes(it.id)), (doc) => doc.sesion_activa != null);
+
   return (
     <>
       <Typography variant="h5">Grupos abiertos</Typography>
