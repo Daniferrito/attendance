@@ -7,12 +7,12 @@ import Breadcrumbs from "./common/Breadcrumbs";
 import {
   ThemeProvider,
   useMediaQuery,
-  createMuiTheme,
   CssBaseline,
   Box,
   Paper,
   makeStyles,
 } from "@material-ui/core";
+import { createTheme } from '@material-ui/core/styles';
 import CourseDetails from "./student/CourseDetails";
 import SessionDetails from "./student/SessionDetail";
 import LoginScreen from "./teacher/LoginScreen";
@@ -30,7 +30,7 @@ function App() {
 
   const theme = React.useMemo(
     () =>
-      createMuiTheme({
+    createTheme({
         palette: {
           type: prefersDarkMode ? "dark" : "light",
         },

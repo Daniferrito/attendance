@@ -13,7 +13,7 @@ import Session from "../types/Session";
 const TeacherCourseView = () => {
   const history = useHistory();
   const classes = useStyles();
-  const { course } = useParams();
+  const { course } = useParams<{course: string}>();
   const [inputValue,setInputValue] = useState('');
 
   const [valueDoc, loadingDoc, errorDoc] = useDocumentData<Group>(
@@ -42,10 +42,7 @@ const TeacherCourseView = () => {
     const año = aDosDigitos(newDate.getFullYear() % 100);
     const hora = aDosDigitos(newDate.getHours());
     setInputValue(`${nuevaSesion}_${dia}-${mes}-${año}_${hora}:00`);
-    return ()=>{
-      console.log("Me van a matar")
-    }
-  }, [listaSesiones])
+  }, [listaSesiones, loading, loadingDoc, valueDoc])
 
 
   if (loading || loadingDoc || listaSesiones == null || valueDoc == null) {
@@ -61,15 +58,9 @@ const TeacherCourseView = () => {
     (doc) => doc.id === valueDoc.sesion_activa
   );
 
-  
-
-  //const [inputValue,setInputValue] = useState(`${nuevaSesion}_${dia}-${mes}-${año}_${hora}:00`); //{nuevaSesion+'_'+dia+'-'+mes+'-'+año+'_'+hora+':00'}
-
-
-
   function aDosDigitos(n:number) {
     const s = n.toString();
-    if (s.length==1) return '0'+s;
+    if (s.length === 1) return '0'+s;
     else             return s;
   }
 
@@ -78,8 +69,12 @@ const TeacherCourseView = () => {
     coleccion.doc(inputValue).set({});
   }
 
-  function onInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setInputValue(event.target.value)
+  function sessionView(doc: Session){
+    return (
+    <ListItem key={doc.id} button component="a" href={`/teacher/${course}/${doc.id}`}>
+      <ListItemText primary={doc.id} />
+    </ListItem>
+    )
   }
 
   return (
@@ -93,19 +88,11 @@ const TeacherCourseView = () => {
         </Button>
       <Typography variant="h5">Sesiones abiertas</Typography>
       <List>
-        {open.map((doc) => (
-          <ListItem key={doc.id} button component="a" href={`/teacher/${course}/${doc.id}`}>
-            <ListItemText primary={doc.id} />
-          </ListItem>
-        ))}
+        {open.map(sessionView)}
       </List>
       <Typography variant="h5">Sesiones cerradas</Typography>
       <List>
-        {closed.map((doc) => (
-          <ListItem key={doc.id} button component="a" href={`/teacher/${course}/${doc.id}`}>
-            <ListItemText primary={doc.id} />
-          </ListItem>
-        ))}
+        {closed.map(sessionView)}
       </List>
       <div className={classes.inputLine}>
       <TextField className={classes.input}

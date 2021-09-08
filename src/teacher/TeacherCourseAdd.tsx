@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import Session from "../types/Session";
 
 const TeacherCourseAdd = () => {
-  const { group } = useParams();
+  const { group } = useParams<{group: string}>();
   const textAreaRef = useRef(null);
   const [value, loading, error] = useCollectionData<Session>(
     fire.firestore().collection(`grupos/${group}/alumnos`),
