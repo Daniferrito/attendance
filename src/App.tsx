@@ -20,8 +20,8 @@ import PrivateRoute from "./common/PrivateRoute";
 import TeacherView from "./teacher/TeacherView";
 import TeacherCourseView from "./teacher/TeacherCourseView";
 import TeacherSessionView from "./teacher/TeacherSessionView";
-import TeacherCourseAdd from "./teacher/TeacherCourseAdd";
-import TeacherGroupAdd from "./teacher/TeacherGroupAdd";
+import AddStudents from "./teacher/AddStudents";
+import CreateGroup from "./teacher/CreateGroup";
 
 function App() {
   const [user, loading] = useAuthState(fire.auth());
@@ -67,13 +67,13 @@ function App() {
                 user={user}
                 loading={loading}
                 path="/create"
-                component={TeacherGroupAdd}
+                component={CreateGroup}
               />
               <PrivateRoute
                 user={user}
                 loading={loading}
                 path="/add/:group"
-                component={TeacherCourseAdd}
+                component={AddStudents}
               />
               <PrivateRoute
                 user={user}

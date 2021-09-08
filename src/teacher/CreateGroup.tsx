@@ -4,7 +4,7 @@ import { Typography, Button, Input } from "@material-ui/core";
 import { useHistory } from "react-router";
 
 
-const TeacherGroupAdd = () => {
+const CreateGroup = () => {
   const history = useHistory();
   const [name, setName] = React.useState("");
 
@@ -36,4 +36,4 @@ const TeacherGroupAdd = () => {
   );
 };
 
-export default TeacherGroupAdd;
+export default CreateGroup;

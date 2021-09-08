@@ -5,7 +5,7 @@ import { Typography, List, ListItem, ListItemText, Button } from "@material-ui/c
 import { useParams } from "react-router-dom";
 import Session from "../types/Session";
 
-const TeacherCourseAdd = () => {
+const AddStudents = () => {
   const { group } = useParams<{group: string}>();
   const textAreaRef = useRef(null);
   const [value, loading, error] = useCollectionData<Session>(
@@ -56,4 +56,4 @@ const TeacherCourseAdd = () => {
   );
 };
 
-export default TeacherCourseAdd;
+export default AddStudents;
