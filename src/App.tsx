@@ -54,6 +54,18 @@ function App() {
               <PrivateRoute
                 user={user}
                 loading={loading}
+                path="/teacher/create"
+                component={CreateGroup}
+              />
+              <PrivateRoute
+                user={user}
+                loading={loading}
+                path="/teacher/:group/add"
+                component={AddStudents}
+              />
+              <PrivateRoute
+                user={user}
+                loading={loading}
                 path="/teacher/:course/:session"
                 component={TeacherSessionView}
               />
@@ -62,18 +74,6 @@ function App() {
                 loading={loading}
                 path="/teacher/:course"
                 component={TeacherCourseView}
-              />
-              <PrivateRoute
-                user={user}
-                loading={loading}
-                path="/create"
-                component={CreateGroup}
-              />
-              <PrivateRoute
-                user={user}
-                loading={loading}
-                path="/add/:group"
-                component={AddStudents}
               />
               <PrivateRoute
                 user={user}

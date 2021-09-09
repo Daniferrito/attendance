@@ -82,7 +82,7 @@ const TeacherCourseView = () => {
       <Button
           variant="contained"
           color="primary"
-          onClick={() => history.push(`/add/${course}`)}
+          onClick={() => history.push(`/teacher/${course}/add`)}
         >
           Add students
         </Button>
