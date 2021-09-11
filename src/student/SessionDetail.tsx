@@ -12,7 +12,7 @@ const nombreAlumnoKey = "nombreAlumno";
 
 const SessionDetails = (props: SessionDetailsProps) => {
   const classes = useStyles();
-  const { course, session } = useParams();
+  const { course, session } = useParams<{course: string, session: string}>();
   const [chosenStudent, setChosenStudent] = useState(localStorage.getItem(nombreAlumnoKey) || undefined);
   const [sentState, setSentState] = useState(false);
   const [valueStudents, loadingStudents, errorStudents] = useCollectionData<Student>(
@@ -43,7 +43,6 @@ const SessionDetails = (props: SessionDetailsProps) => {
       .catch((err) => {
         console.warn(err);
         window.alert('Hay un problema al registrar tu nombre.');
-
       });
   };
 

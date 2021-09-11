@@ -10,14 +10,15 @@ const CreateGroup = () => {
 
   async function onSubmitAdd() {
     const user = fire.auth().currentUser;
-    if (name.length > 0 && user) {
+    const trimmed = name.trim();
+    if (trimmed.length > 0 && user) {
       try{
-        await fire.firestore().collection("grupos").doc(name).set({sesion_activa: null})
+        await fire.firestore().collection("grupos").doc(trimmed).set({sesion_activa: null})
         // Add the new group to the list of the user's groups
         const docRef = fire.firestore().collection("profesores").doc(user.uid);
         const doc = (await docRef.get()).data() || {grupos: []};
-        await docRef.update({grupos: [...doc.grupos, name]});
-        history.push(`/teacher/${name}/add`);
+        await docRef.update({grupos: [...doc.grupos, trimmed]});
+        history.push(`/teacher/${trimmed}/add`);
       }catch(error){
         alert(error);
       }
@@ -29,7 +30,7 @@ const CreateGroup = () => {
       <Typography variant="h6">Nombre:</Typography>
       <Input
         value={name}
-        onChange={(e) => setName(e.target.value.trim())}
+        onChange={(e) => setName(e.target.value)}
         autoFocus
       />
       <Button variant="contained" onClick={onSubmitAdd}>

@@ -13,7 +13,7 @@ import Session from "../types/Session";
 interface CourseDetailsProps { }
 
 const CourseDetails = (props: CourseDetailsProps) => {
-  const { course } = useParams();
+  const { course } = useParams<{course: string}>();
   const [valueDoc, loadingDoc, errorDoc] = useDocumentData<Group>(
     fire.firestore().doc(`grupos/${course}`),
     {

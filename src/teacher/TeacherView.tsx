@@ -29,7 +29,7 @@ const TeacherView = () => {
   if (errorT) {
     return <div>{`Found error: ${errorT}`}</div>;
   }
-  const [open, closed] = partition(value.filter(it => teacher.grupos.map(gr=>gr.replace(/\s/g, "_")).includes(it.id)), (doc) => doc.sesion_activa != null);
+  const [open, closed] = partition(value.filter(it => teacher.grupos.includes(it.id)), (doc) => doc.sesion_activa != null);
 
   return (
     <>
