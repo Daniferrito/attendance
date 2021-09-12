@@ -18,7 +18,7 @@ const CreateGroup = () => {
         const docRef = fire.firestore().collection("profesores").doc(user.uid);
         const doc = (await docRef.get()).data() || {grupos: []};
         await docRef.update({grupos: [...doc.grupos, trimmed]});
-        history.push(`/teacher/${trimmed}/add`);
+        history.push(`/teacher/${trimmed}/addstudents`);
       }catch(error){
         alert(error);
       }
@@ -27,6 +27,7 @@ const CreateGroup = () => {
 
   return (
     <>
+      <Typography variant="h4">Crear Grupo</Typography>
       <Typography variant="h6">Nombre:</Typography>
       <Input
         value={name}
@@ -36,6 +37,20 @@ const CreateGroup = () => {
       <Button variant="contained" onClick={onSubmitAdd}>
         Añadir
       </Button>
+      <Typography variant="inherit">INSTRUCCIONES:</Typography>
+      <Typography variant="inherit">
+      Introduce el nombre del grupo y pulsa en AÑADIR. 
+      </Typography>
+      <Typography variant="inherit">
+      Se recomienda usar como nombre de grupo un formato similar a "1A_física_P1". 
+      Donde se indica el curso, el cuatrimestre, la asignatura, el tipo 
+      (P-prácticas y T-teoría) y el número de grupo si hay más de unos.
+       </Typography>
+      <Typography variant="inherit">
+      Por ejemplo, una asignatura con un grupo de teoría y dos grupos de prácticas 
+      tendría que crear los grupos: 1A_física_T, 1A_física_P1 y 1A_física_P2.
+      </Typography>
+
     </>
   );
 };

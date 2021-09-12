@@ -6,7 +6,7 @@ import {
 import Group from "../types/Group";
 import fire from "../fire";
 import partition from "../utils/partition";
-import { Typography, List, ListItem, ListItemText, Button, TextField, makeStyles } from "@material-ui/core";
+import { Typography, List, ListItem, ListItemText, Button, TextField, makeStyles, Divider } from "@material-ui/core";
 import { useHistory, useParams } from "react-router-dom";
 import Session from "../types/Session";
 
@@ -79,13 +79,7 @@ const TeacherCourseView = () => {
 
   return (
     <>
-      <Button
-          variant="contained"
-          color="primary"
-          onClick={() => history.push(`/teacher/${course}/add`)}
-        >
-          Add students
-        </Button>
+      <Typography variant="h4">Gestión del grupo {course}</Typography>
       <Typography variant="h5">Sesiones abiertas</Typography>
       <List>
         {open.map(sessionView)}
@@ -104,6 +98,35 @@ const TeacherCourseView = () => {
         Añadir sesión
       </Button>
       </div>
+      <Typography variant="h5">Herramientas:</Typography>
+      <Button
+          variant="contained"
+          color="primary"
+          onClick={() => history.push(`/teacher/${course}/addstudents`)}
+        >
+          Añadir nuevos estudiantes al grupo
+        </Button>
+        <Divider light />
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => history.push(`/teacher/${course}/addteachers`)}
+        >
+          Permitir que otros profesores gestionen el grupo
+        </Button>
+        <Typography variant="inherit">INSTRUCCIONES:</Typography>
+        <Typography variant="inherit">
+          Una sesión abierta es la que permite a los alumnos registrarse. Recuerda cerrar las sesiones una vez pasado el tiempo suficiente para que los alumnos se apunten.
+        </Typography>
+        <Typography variant="inherit">
+          Pulsa sobre una de las sesiones para pasar lista o gestionarla.
+        </Typography>
+        <Typography variant="inherit">
+           Para crear una nueva sesión, introduce su nombre en el cuadro de texto y pulsa en “AÑADIR SESION”. Se propone un nombre con formato por NÚM.SESIÓN_FECHA_HORA. Pero puedes cambiarlo y usar los nombres de sesiones que prefieras.
+        </Typography>
+        <Typography variant="inherit">
+           Con los botones de herramienta puedes añadir alumnos al grupo o permitir que otros profesores tengan acceso a este grupo.
+        </Typography>
     </>
   );
 };

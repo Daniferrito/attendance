@@ -3,10 +3,12 @@ import { useCollectionData, useDocumentData } from "react-firebase-hooks/firesto
 import Group from "../types/Group";
 import fire from "../fire";
 import partition from "../utils/partition";
-import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
+import { useHistory} from "react-router-dom";
+import { Typography, List, ListItem, ListItemText, Button } from "@material-ui/core";
 import Teacher from "../types/Teacher";
 
 const TeacherView = () => {
+  const history = useHistory();
   const [value, loading, error] = useCollectionData<Group>(
     fire.firestore().collection("grupos"),
     {
@@ -33,6 +35,7 @@ const TeacherView = () => {
 
   return (
     <>
+      <Typography variant="h4">Gestión de grupos</Typography>
       <Typography variant="h5">Grupos abiertos</Typography>
       <List>
         {open.map((doc) => (
@@ -54,6 +57,23 @@ const TeacherView = () => {
           </ListItem>
         ))}
       </List>
+      <Button
+          variant="contained"
+          color="primary"
+          onClick={() => history.push(`/teacher/create`)}
+        >
+          Crear nuevo grupo
+      </Button>
+      <Typography variant="inherit">INSTRUCCIONES:</Typography>
+      <Typography variant="inherit">
+          Un grupo abierto es el que tiene una sesión abierta. Es decir, que permite a los alumnos registrarse. Recuerda cerrar las sesiones una vez pasado el tiempo suficiente para que los alumnos se apunten.
+      </Typography>
+      <Typography variant="inherit">
+          Pulsa sobre uno de los grupos para pasar lista o gestionarlo.
+      </Typography>
+      <Typography variant="inherit">
+          Pulsa sobre AÑADIR GRUPO para crear un nuevo grupo.
+      </Typography>
     </>
   );
 };
