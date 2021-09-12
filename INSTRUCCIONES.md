@@ -40,7 +40,7 @@ Crea un nuevo usuario con correo y contraseña o de Google.
 
 Envía un correo a jtomas@upv.es para que active este usuario.
 
-### PARA DAR DE ALTA GRUPOS
+### PAara dar de alta grupos
 
 Para cada asignatura tendrás que crear varios grupos. Típicamente uno de teoría y dos o tres de prácticas o seminarios.
 
@@ -50,7 +50,7 @@ Por ejemplo, una asignatura con un grupo de teoría y dos grupos de prácticas t
 Para dar de alta un grupo entra en el link: https://pasar-lista-75130.web.app/teacher y pulsa en “CREAR NUEVO GRUPO”. Introduce un nombre adecuado, según se indica en las instrucciones.
 Luego te pedirá los alumnos del grupo. 
 
-Para añadir un grupo de Poliformat:
+Para añadir los alumnos de un grupo de Poliformat:
 
 a) Entra en Poliformat / asignatura / Calificaciones / Importar/Exportar / Exportación personalizada, selecciona solo “Nombre de estudiante” e indica el “grupo”
 

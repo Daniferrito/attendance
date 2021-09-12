@@ -57,23 +57,24 @@ const TeacherView = () => {
           </ListItem>
         ))}
       </List>
-      <Button
-          variant="contained"
-          color="primary"
-          onClick={() => history.push(`/teacher/create`)}
-        >
+      <Button variant="contained" color="primary"
+          onClick={() => history.push(`/teacher/create`)}>
           Crear nuevo grupo
       </Button>
-      <Typography variant="inherit">INSTRUCCIONES:</Typography>
-      <Typography variant="inherit">
-          Un grupo abierto es el que tiene una sesión abierta. Es decir, que permite a los alumnos registrarse. Recuerda cerrar las sesiones una vez pasado el tiempo suficiente para que los alumnos se apunten.
-      </Typography>
-      <Typography variant="inherit">
-          Pulsa sobre uno de los grupos para pasar lista o gestionarlo.
-      </Typography>
-      <Typography variant="inherit">
-          Pulsa sobre AÑADIR GRUPO para crear un nuevo grupo.
-      </Typography>
+      <p><b>INSTRUCCIONES DE ESTA PÁGINA:</b><br/>
+      Un grupo abierto es el que tiene una sesión abierta. Es decir, que permite a los alumnos registrarse. Recuerda cerrar las sesiones una vez pasado el tiempo suficiente para que los alumnos se apunten.
+        <br/>
+        Pulsa sobre uno de los grupos para pasar lista o gestionarlo.
+        <br/>
+        Pulsa sobre AÑADIR GRUPO para crear un nuevo grupo.
+        <br/>
+      </p>  
+      <p>
+      <a href="https://raw.githubusercontent.com/Daniferrito/attendance/master/INSTRUCCIONES.md">
+        <b>INSTRUCCIONES GENERALES DE USOS:</b>
+      </a>
+      </p>
+
     </>
   );
 };

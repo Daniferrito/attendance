@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import fire from "../fire";
-import { TextField, makeStyles, Button } from "@material-ui/core";
+import { TextField, makeStyles, Button, Typography } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import Student from "../types/Student";
 
@@ -48,6 +48,7 @@ const SessionDetails = (props: SessionDetailsProps) => {
 
   return (
     <>
+      <Typography variant="h5">Control asistencia al grupo {course}</Typography>
       <br />
       <Autocomplete
         defaultValue={chosenStudent}
@@ -69,7 +70,9 @@ const SessionDetails = (props: SessionDetailsProps) => {
         {sentState ? "Ya has sido registrado" : "Asisto presencialmente"}
       </Button>
       <br />
-      <p><b>IMPORTANTE:</b> Bajo ningún concepto se puede pulsar el botón si no es tu nombre el seleccionado o si no estás asistiendo de manera PRESENCIAL a la clase.</p>
+      <p><b>IMPORTANTE:</b> Bajo ningún concepto se puede pulsar el botón si no es tu 
+      nombre el seleccionado o si no estás asistiendo de manera PRESENCIAL a la clase. 
+      Si asistes de forma online, házselo saber al profesor para que te apunte él.</p>
     </>
   );
 };

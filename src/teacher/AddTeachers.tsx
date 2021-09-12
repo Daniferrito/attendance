@@ -63,10 +63,10 @@ const AddTeachers = () => {
           </ListItem>
         ))}
       </List>
-      <Typography variant="inherit">INSTRUCCIONES:</Typography>
-      <Typography variant="inherit">Pulsa sobre un profesor sin permiso para darle 
-          permiso. Pulsa sobre uno con permiso para quitárselo.
-      </Typography>
+      <br/>
+      <p><b>INSTRUCCIONES:</b><br/>
+      Pulsa sobre un profesor sin permiso para darle permiso. Pulsa sobre uno con permiso para quitárselo.
+      </p>
     </>
   );
 };

@@ -105,13 +105,13 @@ const TeacherSessionView = () => {
         <Button variant="contained"
                 color="secondary"
                 onClick={onEndSessionClick}>
-          End Session
+          Cerrar sesión
         </Button>
       ) : valueGroup.sesion_activa === null ? (
         <Button variant="contained"
                 color="primary"
                 onClick={onStartSessionClick}>
-          Start Session
+          Abrir sesión
         </Button>
       ) : (
             <></>
@@ -160,6 +160,13 @@ const TeacherSessionView = () => {
           </ListItem>
         ))}
       </List>
+      <p><b>INSTRUCCIONES:</b><br/>
+        Una sesión abierta es la que permite a los alumnos registrarse. Recuerda cerrar las sesiones una vez pasado el tiempo suficiente para que los alumnos se apunten.
+        <br/>
+        Pulsa sobre una de las sesiones para pasar lista o gestionarla.
+        <br/>
+        Para crear una nueva sesión, introduce su nombre en el cuadro de texto y pulsa en “AÑADIR SESION”. Se propone un nombre con formato por NÚM.SESIÓN_FECHA_HORA. Pero puedes cambiarlo y usar los nombres de sesiones que prefieras.
+      </p>  
     </>
   );
 };

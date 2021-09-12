@@ -37,20 +37,17 @@ const CreateGroup = () => {
       <Button variant="contained" onClick={onSubmitAdd}>
         Añadir
       </Button>
-      <Typography variant="inherit">INSTRUCCIONES:</Typography>
-      <Typography variant="inherit">
-      Introduce el nombre del grupo y pulsa en AÑADIR. 
-      </Typography>
-      <Typography variant="inherit">
-      Se recomienda usar como nombre de grupo un formato similar a "1A_física_P1". 
-      Donde se indica el curso, el cuatrimestre, la asignatura, el tipo 
-      (P-prácticas y T-teoría) y el número de grupo si hay más de unos.
-       </Typography>
-      <Typography variant="inherit">
-      Por ejemplo, una asignatura con un grupo de teoría y dos grupos de prácticas 
-      tendría que crear los grupos: 1A_física_T, 1A_física_P1 y 1A_física_P2.
-      </Typography>
-
+      <br/>
+      <p><b>INSTRUCCIONES:</b><br/>
+        Introduce el nombre del grupo y pulsa en AÑADIR. 
+        <br/>
+        Se recomienda usar como nombre de grupo un formato similar a "1A_física_P1". 
+        Donde se indica el curso, el cuatrimestre, la asignatura, el tipo 
+        (P-prácticas y T-teoría) y el número de grupo si hay más de unos.
+        <br/>
+        Por ejemplo, una asignatura con un grupo de teoría y dos grupos de prácticas 
+        tendría que crear los grupos: 1A_física_T, 1A_física_P1 y 1A_física_P2.
+      </p>
     </>
   );
 };

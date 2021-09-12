@@ -53,25 +53,22 @@ const AddStudents = () => {
       <Button variant="contained" onClick={onSubmitAdd}>
         Añadir
       </Button>
-      <Typography variant="inherit">INSTRUCCIONES:</Typography>
-      <Typography variant="inherit">
+  
+      <br/>
+      <p><b>INSTRUCCIONES:</b><br/>
       Si quieres añadir nuevos alumnos al grupo, escribe sus nombres en 
-      el cuadro de texto (uno por línea) y pulsa en AÑADIR. 
-      </Typography>
-      <Typography variant="inherit">
-      Para añadir un grupo de Poliformat:
-      </Typography>
-      <Typography variant="inherit">
-      a) Entra en Poliformat / asignatura / Calificaciones / Importar/Exportar / Exportación personalizada / Seleccionar solo “Nombre de estudiante” e indicar “grupo”
-      </Typography>
-      <Typography variant="inherit">
-      b) Abre la hoja de cálculo generada y seleccionar la primera columna desde la fila 2.
-      </Typography>
-      <Typography variant="inherit">
-      c) Pegar la selección en el cuadro de texto.
-      </Typography>
+      el cuadro de texto (uno por línea) y pulsa en AÑADIR.
+      <br/><br/>
+      Para añadir un grupo de Poliformat: 
+      <ol type='a'>
+          <li>Entra en <code>Poliformat / asignatura / Calificaciones / Importar/Exportar / Exportación personalizada</code>, selecciona solo “Nombre de estudiante” e indica el “grupo”</li>
+          <li>Abre la hoja de cálculo generada y selecciona la primera columna desde la fila 2.</li>
+          <li>Pega la selección en el cuadro de texto.</li>
+      </ol>
+      </p>
 
     </>
+    
   );
 };
 

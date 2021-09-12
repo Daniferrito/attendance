@@ -98,35 +98,26 @@ const TeacherCourseView = () => {
         Añadir sesión
       </Button>
       </div>
-      <Typography variant="h5">Herramientas:</Typography>
-      <Button
-          variant="contained"
-          color="primary"
-          onClick={() => history.push(`/teacher/${course}/addstudents`)}
-        >
+      <p><b>HERRAMIENTAS:</b></p>
+      <Button variant="contained" color="primary"
+          onClick={() => history.push(`/teacher/${course}/addstudents`)}>
           Añadir nuevos estudiantes al grupo
-        </Button>
-        <Divider light />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => history.push(`/teacher/${course}/addteachers`)}
-        >
+      </Button>
+      <br/>
+      <Button variant="contained" color="primary"
+          onClick={() => history.push(`/teacher/${course}/addteachers`)}>
           Permitir que otros profesores gestionen el grupo
-        </Button>
-        <Typography variant="inherit">INSTRUCCIONES:</Typography>
-        <Typography variant="inherit">
-          Una sesión abierta es la que permite a los alumnos registrarse. Recuerda cerrar las sesiones una vez pasado el tiempo suficiente para que los alumnos se apunten.
-        </Typography>
-        <Typography variant="inherit">
+      </Button>
+      <p><b>INSTRUCCIONES:</b><br/>
+          Una sesión abierta es la que permite a los alumnos registrarse. Recuerda cerrar las 
+          sesiones una vez pasado el tiempo suficiente para que los alumnos se apunten.
+          <br/>
           Pulsa sobre una de las sesiones para pasar lista o gestionarla.
-        </Typography>
-        <Typography variant="inherit">
-           Para crear una nueva sesión, introduce su nombre en el cuadro de texto y pulsa en “AÑADIR SESION”. Se propone un nombre con formato por NÚM.SESIÓN_FECHA_HORA. Pero puedes cambiarlo y usar los nombres de sesiones que prefieras.
-        </Typography>
-        <Typography variant="inherit">
-           Con los botones de herramienta puedes añadir alumnos al grupo o permitir que otros profesores tengan acceso a este grupo.
-        </Typography>
+          <br/>
+          Para crear una nueva sesión, introduce su nombre en el cuadro de texto y pulsa en “AÑADIR SESION”. Se propone un nombre con formato por NÚM.SESIÓN_FECHA_HORA. Pero puedes cambiarlo y usar los nombres de sesiones que prefieras.
+          <br/>
+          Con los botones de herramienta puedes añadir alumnos al grupo o permitir que otros profesores tengan acceso a este grupo.
+      </p>
     </>
   );
 };
