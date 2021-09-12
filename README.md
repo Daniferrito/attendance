@@ -1,6 +1,6 @@
-Aplicación para pasar lista
+# Aplicación para pasar lista
 
-[Instrucciones de usu](/INSTRUCCIONES.md)
+[Instrucciones de uso](/INSTRUCCIONES.md)
 # Desarrollo
 Para desarrollar este proyecto es necesario instalar [node](https://nodejs.org/en/download/current/) (preferiblemente la versión "Current") y [yarn](https://yarnpkg.com/getting-started/install)
 
