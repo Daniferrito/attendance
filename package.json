@@ -26,7 +26,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "publish": "yarn run build && firebase deploy"
+    "prepublish": "yarn run build",
+    "publish": "firebase deploy"
   },
   "eslintConfig": {
     "extends": "react-app"

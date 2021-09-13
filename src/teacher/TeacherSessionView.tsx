@@ -161,11 +161,13 @@ const TeacherSessionView = () => {
         ))}
       </List>
       <p><b>INSTRUCCIONES:</b><br/>
-        Una sesión abierta es la que permite a los alumnos registrarse. Recuerda cerrar las sesiones una vez pasado el tiempo suficiente para que los alumnos se apunten.
+        Pulsa en ABRIR SESIÓN para que los alumnos puedan apuntarse a esta sesión. Recuerda cerrar la sesión (“CERRAR SESIÓN”) una vez pasado el tiempo suficiente para que los alumnos se apunten.
         <br/>
-        Pulsa sobre una de las sesiones para pasar lista o gestionarla.
+        Los alumnos han de usar el link, https://servido.web  (actualmente https://pasar-lista-75130.web.app/) , seleccionar la sesión que acabas de abrir y seleccionar su nombre.
         <br/>
-        Para crear una nueva sesión, introduce su nombre en el cuadro de texto y pulsa en “AÑADIR SESION”. Se propone un nombre con formato por NÚM.SESIÓN_FECHA_HORA. Pero puedes cambiarlo y usar los nombres de sesiones que prefieras.
+        Si algún alumno no dispone de navegador, puedes apuntarlo tú, pulsando en el botón “+”. Si algún alumno accede de forma online, él no puede apuntarse a la sesión. Has de apuntarlo tú, pulsando en el botón de la casita. Si algún alumno se apunta por error, usa el botón de la papelera.
+        <br/>
+        <b>IMPORTANTE:</b> Insistir en que los alumnos bajo ningún concepto pueden apuntarse a una sesión si no están físicamente en el aula.
       </p>  
     </>
   );
